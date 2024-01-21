@@ -1,6 +1,6 @@
 import convert from "color-convert";
 
-export function dothething(from: string, to: string, color: string) {
+export function doTheThing(from: string, to: string, color: string) {
   const bits = color
     .split(/,| /)
     .filter(Boolean)
