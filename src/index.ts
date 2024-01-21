@@ -1,10 +1,11 @@
 import boxen from "boxen";
 import { program } from "commander";
 
-import { createInterface } from "readline/promises";
 import { dothething } from "./converter";
+import prompts from "prompts";
 
-const a = createInterface(process.stdin, process.stdout);
+const colours = ["rgb", "hsl", "hex"].map((e) => ({ title: e }));
+
 program
   .name("colour cli")
   .description("colour converter for the command line")
@@ -12,18 +13,31 @@ program
   .action(async () => {
     console.log(boxen("welcome to CCLI"));
     console.log("Convert from:");
-    const from = await a.question("> ");
-
-    console.log("Convert to:");
-    const to = await a.question("> ");
+    const { from, to } = await prompts([
+      {
+        name: "from",
+        message: "Convert from ",
+        type: "autocomplete",
+        choices: colours,
+      },
+      {
+        name: "to",
+        message: "to ",
+        type: "autocomplete",
+        choices: colours,
+        format: (x, y) => x,
+      },
+    ]);
 
     while (true) {
       console.log("colour:");
-      const col = await a.question("> ");
+      const { colour } = await prompts({
+        type: "text",
+        name: "colour",
+        message: "",
+      });
 
-      if (!col) return;
-
-      const res = dothething(from, to, col);
+      const res = dothething(from, to, colour);
       console.log(res);
     }
   });

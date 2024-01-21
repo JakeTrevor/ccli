@@ -12,10 +12,12 @@
   "author": "JakeTrevor <Jacob.Trevor234@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@types/prompts": "^2.4.9",
     "boxen": "^7.1.1",
     "chalk": "^5.3.0",
     "color-convert": "^2.0.1",
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@types/color-convert": "^2.0.3",
