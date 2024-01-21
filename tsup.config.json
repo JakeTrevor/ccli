@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/egoist/tsup/dev/schema.json",
+  "entry": ["src/index.ts"],
+  "external": ["readline/promises"],
+  "format": "esm"
+}
